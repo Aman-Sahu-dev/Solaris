@@ -1,0 +1,17 @@
+[package]
+name = "solaris-core"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "solaris-core"
+path = "src/main.rs"
+
+[dependencies]
+lopdf = "0.33"
+prost = "0.14.4"
+tokio = { version = "1.53.2", features = ["full"] }
+tonic = "0.14.6"
+
+[build-dependencies]
+tonic-build = "0.14.6"
