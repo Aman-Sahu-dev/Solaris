@@ -3,7 +3,7 @@ use std::path::{Path, PathBuf};
 
 #[derive(Debug, thiserror::Error)]
 pub enum PdfDocumentError {
-    #[error("failed to load the file")]
+    #[error("failed to load the file: {path}")]
     Load {
         path: PathBuf,
         #[source]
@@ -22,5 +22,8 @@ impl PdfDocument {
                 source,
             })?;
         Ok(Self { pdf: inner })
+    }
+    pub fn page_count(&self) -> u32 {
+        self.pdf.get_pages().len() as u32
     }
 }
